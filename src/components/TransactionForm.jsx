@@ -1,3 +1,5 @@
+import "../styles/TransactionForm.css";
+
 import { useState, useEffect } from "react";
 import {v4 as uuidv4} from "uuid";
 
@@ -14,9 +16,14 @@ function TransactionForm({ addTransaction,editingTransaction, updateTransaction 
     setAmount(editingTransaction.amount);
     setCategory(editingTransaction.category);
     setType(editingTransaction.type);
+  } else {
+    setTitle("");
+    setAmount("");
+    setCategory("Food");
+    setType("Income");
   }
-  }, [editingTransaction]);
-
+}, [editingTransaction]);
+  
 
   const handleSubmit =(e)=>{
     e.preventDefault();
@@ -41,8 +48,8 @@ function TransactionForm({ addTransaction,editingTransaction, updateTransaction 
     setType("Income");
   };
   return (
-    <div>
-      <h2>Add Transaction</h2>  
+    <div className="card">
+      <h2>{editingTransaction ? "Editing Transaction" : "Add Transaction"}</h2>  
       <form onSubmit={handleSubmit}>
         <div>
             <label>Title</label>

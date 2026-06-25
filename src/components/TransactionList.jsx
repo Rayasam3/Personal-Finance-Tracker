@@ -1,3 +1,5 @@
+import "../styles/TransactionList.css";
+
 function TransactionList({transactions,deleteTransaction,searchTerm,
   setSearchTerm,
   selectedCategory,
@@ -50,7 +52,7 @@ function TransactionList({transactions,deleteTransaction,searchTerm,
           transactions.length === 0 ?(
             <p>No Transactions Added Yet.</p>
           ) : (transactions.map((transaction) => (
-            <div key ={transaction.id}>
+            <div key ={transaction.id} className="transaction-item">
               <h3>{transaction.title}</h3>
               <p>Amount: ₹{transaction.amount}</p>
               <p>Category: {transaction.category}</p>

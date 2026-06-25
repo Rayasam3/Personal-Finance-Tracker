@@ -12,6 +12,8 @@ function Dashboard() {
 
     const [editingTransaction, setEditingTransaction] = useState(null);
 
+    const [sortOption, setSortOption] = useState("latest");
+
     const [transactions, setTransactions] = useState(()=>{
       const savedTransactions = localStorage.getItem("transactions");
       return savedTransactions ? JSON.parse(savedTransactions) : [];
@@ -36,7 +38,23 @@ function Dashboard() {
     );
     });
 
+    
+    const sortedTransactions = [...filteredTransactions,];
+    if (sortOption === "latest") {
+      sortedTransactions.reverse();
+    }
 
+    if (sortOption === "highest") {
+      sortedTransactions.sort(
+        (a, b) => b.amount - a.amount
+      );
+    }
+
+    if (sortOption === "lowest") {
+      sortedTransactions.sort(
+        (a, b) => a.amount - b.amount
+      );
+    }
 
     const deleteTransaction = (id) => {
       setTransactions(
@@ -63,16 +81,19 @@ function Dashboard() {
       }, [transactions]);
 
   return (
-    <div>
+    <div className="container">
         <Navbar />
+        <div className="card">
         <SummaryCards transactions = {transactions}/>
-        <TransactionForm
+        </div>
+
+        <div className="card"><TransactionForm
           addTransaction={addTransaction}
           editingTransaction={editingTransaction}
           updateTransaction={updateTransaction}
-        />
-        <TransactionList
-          transactions={filteredTransactions}
+        /></div>
+        <div className="card"><TransactionList
+          transactions={sortedTransactions}
           deleteTransaction={deleteTransaction}
           searchTerm={searchTerm}
           setSearchTerm={setSearchTerm}
@@ -81,7 +102,10 @@ function Dashboard() {
           selectedType={selectedType}
           setSelectedType={setSelectedType}
           setEditingTransaction={setEditingTransaction}
-          />
+          sortOption={sortOption}
+          setSortOption={setSortOption}
+          /></div>
+        
     </div>
   );
 }

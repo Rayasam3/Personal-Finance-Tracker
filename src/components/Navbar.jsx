@@ -1,6 +1,7 @@
+import "../styles/Navbar.css";
 function Navbar() {
   return (
-    <div>
+    <nav>
       <h1>Personal Finanace Tracker</h1>
       <ul>
         <li>Dashboard</li>
@@ -8,7 +9,7 @@ function Navbar() {
         <li>Analytics</li>
         <li>Settings</li>
       </ul>
-    </div>
+    </nav>
   );
 }
 

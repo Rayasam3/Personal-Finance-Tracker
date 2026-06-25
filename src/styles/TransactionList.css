@@ -1,0 +1,10 @@
+.transaction-item {
+  background: #f7f7f7;
+  padding: 15px;
+  border-radius: 10px;
+  margin-top: 15px;
+}
+
+.transaction-item button {
+  margin-right: 10px;
+}
