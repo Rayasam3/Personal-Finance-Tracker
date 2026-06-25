@@ -1,28 +1,45 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import {v4 as uuidv4} from "uuid";
 
-function TransactionForm({ addTransaction }) {
+function TransactionForm({ addTransaction,editingTransaction, updateTransaction }) {
   const [title,setTitle] = useState("");
   const [amount,setAmount] = useState("");
   const [category,setCategory] = useState("Food");
   const [type, setType] = useState("Income");
 
+
+  useEffect(() => {
+  if (editingTransaction) {
+    setTitle(editingTransaction.title);
+    setAmount(editingTransaction.amount);
+    setCategory(editingTransaction.category);
+    setType(editingTransaction.type);
+  }
+  }, [editingTransaction]);
+
+
   const handleSubmit =(e)=>{
     e.preventDefault();
     const transaction = {
-      id: uuidv4(),
       title,
       amount:Number(amount),
       category,
       type,
     };
-    addTransaction(transaction);
+    if (editingTransaction) {
+      updateTransaction({
+        ...transaction,
+        id: editingTransaction.id,
+      });
+    } else {
+      addTransaction({...transaction,id:uuidv4(),});
+    }
 
     setTitle("");
     setAmount("");
     setCategory("Food");
     setType("Income");
-  }
+  };
   return (
     <div>
       <h2>Add Transaction</h2>  
@@ -60,7 +77,7 @@ function TransactionForm({ addTransaction }) {
             </select>
         </div>
         <br />
-        <button type="submit">Add Transaction</button>
+        <button type="submit">{editingTransaction? "Update Transaction": "Add Transaction"}</button>
       </form>
     </div>
   );
