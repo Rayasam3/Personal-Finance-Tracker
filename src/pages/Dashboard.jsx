@@ -11,12 +11,18 @@ function Dashboard() {
     setTransactions([...transactions,newTransaction]);
     };
 
+    const deleteTransaction = (id) => {
+      setTransactions(
+        transactions.filter((transaction) => transaction.id !== id)
+      );
+    };
+
   return (
     <div>
         <Navbar />
-        <SummaryCards />
+        <SummaryCards transactions = {transactions}/>
         <TransactionForm addTransaction={addTransaction}/>
-        <TransactionList transactions={transactions} />
+        <TransactionList transactions={transactions} deleteTransaction={deleteTransaction}/>
     </div>
   );
 }

@@ -1,5 +1,5 @@
 import { useState } from "react";
-
+import {v4 as uuidv4} from "uuid";
 
 function TransactionForm({ addTransaction }) {
   const [title,setTitle] = useState("");
@@ -10,8 +10,9 @@ function TransactionForm({ addTransaction }) {
   const handleSubmit =(e)=>{
     e.preventDefault();
     const transaction = {
+      id: uuidv4(),
       title,
-      amount,
+      amount:Number(amount),
       category,
       type,
     };
