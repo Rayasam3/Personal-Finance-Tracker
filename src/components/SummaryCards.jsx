@@ -14,15 +14,15 @@ function SummaryCards({ transactions}) {
       <div className="summary-container">
         <div className="summary-box">
           <h3>Total Income</h3>
-          <p>₹{totalIncome}</p>
+          <p className="income-text">₹{totalIncome}</p>
         </div>
         <div className="summary-box">
           <h3>Total Expense</h3>
-          <p>₹{totalExpense}</p>
+          <p className="expense-text">₹{totalExpense}</p>
         </div>
         <div className="summary-box">
           <h3>Current Balance</h3>
-          <p>₹{balance}</p>
+          <p className="balance-text">₹{balance}</p>
         </div>
       </div>
     </div>

@@ -7,7 +7,7 @@ function TransactionList({transactions,deleteTransaction,searchTerm,
   selectedType,
   setSelectedType, setEditingTransaction,}) {
   return (
-    <div>
+    <div className="card transaction-list">
         <h2>Transactions</h2>
         <div>
           <input
@@ -52,7 +52,7 @@ function TransactionList({transactions,deleteTransaction,searchTerm,
           transactions.length === 0 ?(
             <p>No Transactions Added Yet.</p>
           ) : (transactions.map((transaction) => (
-            <div key ={transaction.id} className="transaction-item">
+            <div key ={transaction.id} className={`transaction-item ${ transaction.type === "Income" ? "income" : "expense" }`}  >
               <h3>{transaction.title}</h3>
               <p>Amount: ₹{transaction.amount}</p>
               <p>Category: {transaction.category}</p>

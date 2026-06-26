@@ -1,6 +1,36 @@
 nav {
   background-color: #2563eb;
   color: white;
-  padding: 20px;
-  border-radius: 10px;
+  padding: 20px 40px;
+  border-radius: 15px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+nav h1 {
+  font-size: 28px;
+}
+
+nav ul {
+  display: flex;
+  list-style: none;
+  gap: 30px;
+}
+
+nav li {
+  cursor: pointer;
+  font-size: 18px;
+}
+
+nav li:hover {
+  color: #dbeafe;
+}
+
+nav li {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  cursor: pointer;
+  font-size: 18px;
 }

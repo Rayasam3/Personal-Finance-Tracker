@@ -10,6 +10,13 @@ function Dashboard() {
     const [selectedCategory, setSelectedCategory] = useState("All");
     const [ selectedType, setSelectedType] =  useState("All");
 
+    const [darkMode, setDarkMode] = useState(() => { const savedMode = localStorage.getItem("darkMode"); return savedMode ? JSON.parse(savedMode): false;});
+
+
+    useEffect(() => { localStorage.setItem( "darkMode", JSON.stringify(darkMode));}, [darkMode]);
+
+    useEffect(() => {if (darkMode) {document.body.classList.add("dark-body");} else {document.body.classList.remove("dark-body");}}, [darkMode]);
+
     const [editingTransaction, setEditingTransaction] = useState(null);
 
     const [sortOption, setSortOption] = useState("latest");
@@ -81,12 +88,13 @@ function Dashboard() {
       }, [transactions]);
 
   return (
-    <div className="container">
-        <Navbar />
+    <div className={`container ${darkMode ? "dark" : ""}`}>
+        <Navbar darkMode={darkMode} setDarkMode={setDarkMode} />
         <div className="card">
         <SummaryCards transactions = {transactions}/>
         </div>
 
+      <div className="dashboard-grid">
         <div className="card"><TransactionForm
           addTransaction={addTransaction}
           editingTransaction={editingTransaction}
@@ -105,7 +113,7 @@ function Dashboard() {
           sortOption={sortOption}
           setSortOption={setSortOption}
           /></div>
-        
+      </div>
     </div>
   );
 }

@@ -1,14 +1,19 @@
 import "../styles/Navbar.css";
-function Navbar() {
+import {FaWallet,FaChartPie,FaCog,FaExchangeAlt} from "react-icons/fa";
+function Navbar({
+  darkMode,
+  setDarkMode,
+}) {
   return (
     <nav>
       <h1>Personal Finanace Tracker</h1>
       <ul>
-        <li>Dashboard</li>
-        <li>Transactions</li>
-        <li>Analytics</li>
-        <li>Settings</li>
+        <li><FaWallet /> Dashboard</li>
+        <li><FaExchangeAlt /> Transactions</li>
+        <li><FaChartPie /> Analytics</li>
+        <li><FaCog /> Settings</li>
       </ul>
+      <button onClick={() => setDarkMode(!darkMode)}> {darkMode ? "☀️ Light" : "🌙 Dark"} </button>
     </nav>
   );
 }

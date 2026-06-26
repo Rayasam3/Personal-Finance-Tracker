@@ -4,19 +4,69 @@
     box-sizing: border-box;
 
 }
-body{
-    background-color: #f4f6f8;
-    font-family: Arial, Helvetica, sans-serif;
-    padding:20px;
+body {
+  background-color: #f4f6f8;
+  font-family: "Segoe UI", sans-serif;
+  padding: 20px;
 }
-.container{
-    max-width: 900px;
-    margin: auto;
+
+.container {
+  width: 100%;
+  max-width: 100%;
+  margin: auto;
 }
 
 .card {
   background: white;
-  padding: 20px;
-  margin-top: 20px;
-  border-radius: 10px;
+  padding: 30px;
+  margin-top: 25px;
+  border-radius: 15px;
+  box-shadow: 0px 4px 15px rgba(0,0,0,0.08);
+}
+
+.dashboard-grid {
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  gap: 25px;
+  margin-top: 25px;
+}
+@media (max-width: 900px) {
+  .dashboard-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.dark {
+  background-color: #111827;
+  min-height: 100vh;
+  color: white;
+}
+.dark .card {
+  background-color: #1f2937;
+  box-shadow: none;
+}
+
+.dark .summary-box {
+  background-color: #374151;
+}
+.dark .transaction-item {
+  background-color: #374151;
+}
+
+.dark input,
+.dark select {
+  background-color: #374151;
+  color: white;
+  border: 1px solid #555;
+}
+
+.dark nav {
+  background-color: #0f172a;
+}
+.dark .summary-box h3 {
+  color: #d1d5db;
+}
+
+.dark-body {
+  background-color: #111827;
 }
